@@ -522,7 +522,7 @@ def detect_sb_pullback(
             if not in_pullback and bool(row["is_black"]):
                 in_pullback = True
                 daily.loc[daily_mask, "sb_pb_black_3d"] = True
-                lows_in_pb = [float(row["low"])]
+                lows_in_pb = [float(row["close"])]
                 continue
 
             if not in_pullback:
@@ -530,7 +530,7 @@ def detect_sb_pullback(
 
             # 回踩監控
             daily.loc[daily_mask, "sb_pb_monitoring"] = True
-            lows_in_pb.append(float(row["low"]))
+            lows_in_pb.append(float(row["close"]))
 
             for d_idx in daily_in_period.index:
                 d = daily.loc[d_idx]
