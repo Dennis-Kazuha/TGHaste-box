@@ -17,7 +17,7 @@ def scan_stocks(req: ScanRequest):
             # 抓取資料
             data = data_fetcher.get_all_timeframes(t)
             # 執行策略
-            df = strategy.run_strategy(data["daily"], data["weekly"], three_d=data["3d"])
+            df, _ = strategy.run_strategy(data["daily"], data["weekly"], three_d=data["3d"])
             summ = strategy.get_today_summary(df, data["ticker"])
             
             # 根據狀態組合訊息
